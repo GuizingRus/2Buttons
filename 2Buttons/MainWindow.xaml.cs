@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
@@ -12,39 +12,38 @@ using System.Windows.Shapes;
 
 namespace _2Buttons
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<int> _numbers = new ObservableCollection<int>();
-        public ObservableCollection<int> Numbers => _numbers;
-
-        //public ObservableCollection<int> SelectedIndex = Numbers;
-
+        private int Count = 0;
         public MainWindow()
         {
             InitializeComponent();
-            lvEntries.ItemsSource = _numbers;
-            
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
-            int count = Numbers.Count;
-            Numbers.Add(count);
+            lvEntries.Items.Add(Count.ToString());
+            Count++;
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            int index = lvEntries.SelectedIndex;
-            Numbers.RemoveAt(index);
+
+            var items = lvEntries.SelectedItems.Cast<string>().ToList();
+
+            if (items != null)
+            {
+                foreach (var item in items)
+                {
+                    lvEntries.Items.Remove(item);
+                }
+            }
         }
 
         private void BtnClr_Click(object sender, RoutedEventArgs e)
         {
-            Numbers.Clear();
+            lvEntries.Items.Clear();
+            Count = 0;
         }
     }
 }
