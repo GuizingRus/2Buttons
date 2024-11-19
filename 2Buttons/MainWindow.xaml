@@ -18,7 +18,7 @@
         <Button Content="Add" Margin="140,17,537,16" Click="BtnAdd_Click"/>
         <Button Content="Delete" Margin="330,17,340,16" Click="BtnDel_Click"/>
         <Button Content="Clear" Margin="530,17,155,16" Click="BtnClr_Click"/>
-        <ListView Name="lvEntries" Margin="116,91,116,-336" >
+        <ListView Name="lvEntries" Margin="116,91,116,-336" SelectionMode="Multiple">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"/>
